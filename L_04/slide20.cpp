@@ -6,18 +6,20 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <sys/ipc.h>
-#include <sys/shm.h3>
+#include <sys/shm.h>
+
+using namespace std;
 
 int main (void){
   const int BUFFER_SIZE = 10;
-  key_t key:
+  key_t key;
   int shmid;
-  if ((key = frok(".", 'S')) == -1)
+  if ((key = ftok(".", 'S')) == -1)
   {
     cout << "Unable to create a key" << endl;
   }
   // Create size of buffer + 1, (+1 for counter).
-  shmid = shmget (key, (BUFFER_SIZE + 1) * sizeof(int), 0644 | IPC_CREAT):
+  shmid = shmget (key, (BUFFER_SIZE + 1) * sizeof(int), 0644 | IPC_CREAT);
   if (shmid == -1)
   {
     cout << "Unable to get shared space." << endl;

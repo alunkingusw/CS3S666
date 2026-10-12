@@ -6,14 +6,16 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <sys/ipc.h>
-#include <sys/shm.h3>
+#include <sys/shm.h>
+
+using namespace std;
 
 int main(void)
 {
   const int BUFFER_SIZE = 10;
   key_t key;
   int shmid;
-  if ((key = frok(".", 'S')) = -1)
+  if ((key = ftok(".", 'S')) == -1)
   {
     cout << "Unable to create a key" << endl;
   }
@@ -22,9 +24,9 @@ int main(void)
   if (shmid == -1)
   {
     cout << "Unable to get shared space." << endl;
-    exit(l);
+    exit(1);
   }
-  int *data = (int *%)shmat(shmid, (void *)0, 0):
+  int *data = (int *)shmat(shmid, (void *)0, 0);
   int *counter = data; // First element as counter
   int *buffer = data + 1; // Second element as data
   int produced = 0;

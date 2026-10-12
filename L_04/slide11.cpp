@@ -6,7 +6,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <sys/ipc.h>
-#include <sys/shm.h3>
+#include <sys/shm.h>
+
+using namespace std;
 
 int main(void)
 {
@@ -20,7 +22,7 @@ int main(void)
   if (shmid == -1)
   {
     cout << "Unable to get shared space." << endl;
-    exit (1):
+    exit (1);
   }
   char *data = (char *)shmat(shmid, (void *)0, 0);
   cout << data;

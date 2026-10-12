@@ -9,24 +9,26 @@
 #include <sys/shm.h>
 #include <semaphore.h>
 
+using namespace std;
+
 int main() {
   // create shared memory region
-  key_t segid = frok(".", 'r'):
+  key_t segid = ftok(".", 'r');
   
   int shmid;
-  shmid = shmget (segid, sizeof(sem_t), IPC_CREAT | 0660):
+  shmid = shmget (segid, sizeof(sem_t), IPC_CREAT | 0660);
   void* sh_mem = shmat(shmid, (void*)0, 0);
   
   //create POSIX semaphore
   sem_t* sem = (sem_t*)sh_mem;
-  int sts = sem_init (sem, true, 1):
+  int sts = sem_init (sem, true, 1);
   
   //spawn a child process
-  int p = fork():
+  int p = fork();
   if (p> 0) {
     sem_wait (sem);
     cout << "Parent: Sleeping for 2 seconds" << endl;
-    sleep (2):
+    sleep (2);
     cout << "Parent: Done sleeping" << endl;
     sem_post (sem) ;
     wait (NULL) ;
@@ -34,7 +36,7 @@ int main() {
   else if (p == 0) {
     sem_wait (sem);
     cout << "Child: Sleeping for 2 seconds" << endl;
-    sleep (2):
+    sleep (2);
     cout << "Child: Done sleeping" << endl;
     sem_post (sem);
   }
