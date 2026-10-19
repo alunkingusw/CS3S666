@@ -1,0 +1,39 @@
+#include <cstdlib>
+#include <iostream>
+#include <unistd.h>
+#include <pthread.h>
+
+using namespace std;
+
+int COUNTER_A = 0;
+int COUNTER B = 0;
+void *ChangeCounter (void *pVal)
+{
+  int myVal = *(int *) pVal;
+  for (int i = 0; i< 10000; i++)
+  {
+    COUNTER A = myVal;
+    sleep (0.001);
+    COUNTER_B = myVal;
+    if (COUNTER_A != COUNTER_B)
+      cout << "Counter's different!" << endl;  
+  }
+  return NULL;
+}
+
+  int main()
+{
+  pthread_t threadA;
+  pthread_t threadB;
+
+  int valA = 0;
+  int valB = 1;
+
+  pthread_create (&threadA, NULL, ChangeCounter, (void*) &valA);
+  pthread_create (&threadB, NULL, ChangeCounter, (void*) &valB);
+
+  pthread_join (threadA, NULL);
+  pthread_join (threadB, NULL);
+
+  return 0;
+}
