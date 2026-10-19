@@ -14,7 +14,7 @@ int main(void)
 {
   key_t key;
   int shmid;
-  if ((key = ftok(".", 'R')) == -1)
+  if ((key = ftok("newKey.txt", 'R')) == -1)
   {
     cout << "Unable to create a key" << endl;
   }

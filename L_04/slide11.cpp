@@ -14,7 +14,7 @@ int main(void)
 {
   key_t key;
   int shmid;
-  if ((key = ftok(".", 'R')) == -1)
+  if ((key = ftok("emptyKey.txt", 'R')) == -1)
   {
     cout << "Unable to create a key" << endl;
   }
@@ -26,5 +26,6 @@ int main(void)
   }
   char *data = (char *)shmat(shmid, (void *)0, 0);
   cout << data;
+  cout << endl;
   return(0) ;
 }
