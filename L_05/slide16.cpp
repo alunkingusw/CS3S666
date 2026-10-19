@@ -15,7 +15,7 @@ void *HelloWorld (void *)
 int main()
 {
   pthread_t thread;
-  int rc pthread_create (&thread, NULL, HelloWorld, NULL); 
+  int rc = pthread_create (&thread, NULL, HelloWorld, NULL); 
   if (rc != 0)
   {
     cout << "Thread creation failed." << endl;

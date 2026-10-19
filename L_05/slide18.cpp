@@ -16,7 +16,7 @@ int main()
 {
   pthread_t thread;
   int num_in = 5;
-  int rc pthread_create (&thread, NULL, HelloWorld, (void *) &num_in);
+  int rc = pthread_create (&thread, NULL, HelloWorld, (void *) &num_in);
   if (rc != 0)
   {
     cout << "Thread failed." << endl;

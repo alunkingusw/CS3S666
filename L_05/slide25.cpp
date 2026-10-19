@@ -6,13 +6,13 @@
 using namespace std;
 
 int COUNTER_A = 0;
-int COUNTER B = 0;
+int COUNTER_B = 0;
 void *ChangeCounter (void *pVal)
 {
   int myVal = *(int *) pVal;
   for (int i = 0; i< 10000; i++)
   {
-    COUNTER A = myVal;
+    COUNTER_A = myVal;
     sleep (0.001);
     COUNTER_B = myVal;
     if (COUNTER_A != COUNTER_B)
