@@ -81,6 +81,10 @@ int main()
     }
     CHECK(err);
 
+    //note the only bit of code we needed to change was the DEVICE flag.
+    //this means we can try with the GPU preference, but fall back if
+    //needed, without having to subsequently change the code.
+
     //Step 1: load in the HelloWorld file to a string
     ifstream kernelFile("HelloWorld.cl", ios::in);
     if (!kernelFile.is_open()) {
